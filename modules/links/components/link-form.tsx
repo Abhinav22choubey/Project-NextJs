@@ -1,0 +1,198 @@
+"use client"
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+import {
+  Plus,
+  Mail,
+  Archive,
+  FolderPlus,
+  Camera,
+  Edit3,
+  X,
+} from "lucide-react";
+import { useUser } from "@clerk/nextjs";
+interface Profile{
+    firstName:string,
+    lastName:string,
+    username:string,
+    bio?:string,
+    imageUrl?:string
+}
+interface Props{
+    username:string,
+    bio:string
+}
+
+const LinkForm = ({username,bio}:Props) => {
+    const currentUser=useUser();
+    const [profile,setProfile]=useState<Profile>({
+        firstName:currentUser.user?.firstName||"",
+        lastName:currentUser.user?.lastName||"",
+        username:username||"",
+        bio:bio||"",
+        imageUrl:currentUser?.user?.imageUrl||`https://ui-avatars.com/api/?name=${currentUser.user?.firstName}+${currentUser.user?.lastName}`,
+    })
+  return (
+    <div className="w-full max-w-2xl mx-auto space-y-6">
+       <Card className="border-2 border-dashed border-gray-200 hover:border-green-400 transition-colors">
+        <CardContent className="p-6">
+          <div className="flex items-center gap-4">
+            <div className="relative group">
+              <Avatar className="h-20 w-20 border-4 border-white shadow-lg">
+                <AvatarImage
+                  src={profile.imageUrl || "/placeholder.svg"}
+                  alt={profile.username}
+                />
+                <AvatarFallback className="text-lg font-semibold bg-gray-100 text-gray-600">
+                  {profile.username.slice(0, 2).toUpperCase() || "UN"}
+                </AvatarFallback>
+              </Avatar>
+              <Button
+                size="sm"
+                variant="secondary"
+                className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <Camera size={14} />
+              </Button>
+            </div>
+
+            <div className="flex-1 space-y-2">
+              {editingProfile ? (
+                <form
+                  onSubmit={profileForm.handleSubmit(onProfileSubmit)}
+                  className="space-y-2"
+                >
+                  <div className="flex gap-2">
+                    <Input
+                      {...profileForm.register("firstName")}
+                      placeholder="First Name"
+                    />
+                    <Input
+                      {...profileForm.register("lastName")}
+                      placeholder="Last Name"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      {...profileForm.register("username")}
+                      placeholder="Username"
+                      className="font-semibold cursor-not-allowed"
+                      readOnly
+                      disabled
+                    />
+                    {profileForm.formState.errors.username && (
+                      <p className="text-sm text-red-500 mt-1">
+                        {profileForm.formState.errors.username.message}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <Textarea
+                      {...profileForm.register("bio")}
+                      placeholder="Add bio..."
+                      className="resize-none"
+                      rows={2}
+                    />
+                    {profileForm.formState.errors.bio && (
+                      <p className="text-sm text-red-500 mt-1">
+                        {profileForm.formState.errors.bio.message}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      type="submit"
+                      disabled={profileForm.formState.isSubmitting}
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      type="button"
+                      onClick={() => setEditingProfile(false)}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </form>
+              ) : (
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-lg">
+                      {profile.username || "Add username..."}
+                    </h3>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-6 w-6 p-0"
+                      onClick={() => setEditingProfile(true)}
+                    >
+                      <Edit3 size={12} />
+                    </Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {profile.bio || "Add bio..."}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-4 flex gap-2 flex-wrap">
+            {/* Display existing social links */}
+            {userSocialLinks.map((socialLink) => {
+              const Icon = getSocialIcon(socialLink.platform);
+              return (
+                <div key={socialLink.id} className="relative group">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-9 w-9 p-0 bg-transparent"
+                    onClick={() => window.open(socialLink.url, '_blank')}
+                  >
+                    <Icon size={16} />
+                  </Button>
+                  {/* Delete button on hover */}
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                    onClick={() => handleDeleteSocialLink(socialLink.id)}
+                  >
+                    <X size={10} />
+                  </Button>
+                  {/* Edit on click (optional - you can add this functionality) */}
+                </div>
+              );
+            })}
+            
+            {/* Add new social link button */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9 w-9 p-0 border-dashed bg-transparent"
+              onClick={handleAddSocialLink}
+            >
+              <Plus size={16} />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+
+export default LinkForm

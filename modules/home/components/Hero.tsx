@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ClaimLinkForm from "./ClaimLinkForm";
 import { onBoardUser } from "@/modules/auth/action";
 import { getCurrentUsername } from "../actions";
+import { useRouter } from "next/navigation";
 type User = Awaited<ReturnType<typeof onBoardUser>>;
 type Profile = Awaited<ReturnType<typeof getCurrentUsername>>;
 type LandingClientProps = {
@@ -15,6 +16,7 @@ export default async function LandingPage({
   user,
   profile,
 }: LandingClientProps) {
+  const router=useRouter();
   return (
     <div className="min-h-screen mt-15  text-black dark:text-white overflow-hidden">
       {/* HERO SECTION */}
@@ -49,7 +51,9 @@ export default async function LandingPage({
               transition={{ delay: 0.6 }}
               className="mt-0"
             >
-              <button className="bg-[#41B313] text-black px-6 py-3 rounded-sm m-8 text-lg font-semibold hover:scale-105 transition">
+              <button onClick={()=>{
+                router.push("/admin");
+              }} className="bg-[#41B313] text-black px-6 py-3 rounded-sm m-8 text-lg font-semibold hover:scale-105 transition">
                 Dashboard
               </button>
             </motion.div>
