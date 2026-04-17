@@ -1,15 +1,27 @@
-import React from 'react'
-import { onBoardUser } from '@/modules/auth/action'
-import LandingPage from '@/modules/home/components/Hero';
+import React from "react";
+import { onBoardUser } from "@/modules/auth/action";
+import LandingPage from "@/modules/home/components/Hero";
 
-const HomePage =async () => {
+import { getCurrentUsername } from "@/modules/home/actions";
+import { auth } from "@clerk/nextjs/server";
+
+const HomePage = async () => {
   // it can be optimised later as for now it unneccessary calls db
+  const { userId } = await auth();
+
+  let user = null;
+  let profile = null;
+
+  if (userId) {
+    user = await onBoardUser();
+    profile = await getCurrentUsername();
+  }
   await onBoardUser();
   return (
     <div>
-      <LandingPage/>
+      <LandingPage user={user} profile={profile} />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

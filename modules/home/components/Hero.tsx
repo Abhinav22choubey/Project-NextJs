@@ -2,8 +2,19 @@
 
 import { motion } from "framer-motion";
 import ClaimLinkForm from "./ClaimLinkForm";
+import { onBoardUser } from "@/modules/auth/action";
+import { getCurrentUsername } from "../actions";
+type User = Awaited<ReturnType<typeof onBoardUser>>;
+type Profile = Awaited<ReturnType<typeof getCurrentUsername>>;
+type LandingClientProps = {
+  user: User | null;
+  profile: Profile | null;
+};
 
-export default function LandingPage() {
+export default async function LandingPage({
+  user,
+  profile,
+}: LandingClientProps) {
   return (
     <div className="min-h-screen mt-15  text-black dark:text-white overflow-hidden">
       {/* HERO SECTION */}
@@ -29,25 +40,27 @@ export default function LandingPage() {
           you share everything you create, curate and sell from your social
           media profiles.
         </motion.p>
-
         {/* CTA BUTTON */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8"
-        >
-          <button className="bg-[#41B313] text-black px-6 py-3 rounded-full text-lg font-semibold hover:scale-105 transition">
-            Create Your Link
-          </button>
-        </motion.div>
-
-        {/* Claim link section */}
-        <section className="pb-16 md:pb-24">
-            <div className="max-w-md mx-auto">
-                <ClaimLinkForm/>
-            </div>
-        </section>
+        {user?.success && profile?.username && (
+          <>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6 }}
+              className="mt-0"
+            >
+              <button className="bg-[#41B313] text-black px-6 py-3 rounded-sm m-8 text-lg font-semibold hover:scale-105 transition">
+                Dashboard
+              </button>
+            </motion.div>
+            {/* Claim link section */}
+            <section className="pb-16 md:pb-24 ">
+              <div className="max-w-md mx-auto">
+                <ClaimLinkForm />
+              </div>
+            </section>
+          </>
+        )}
 
         {/* MOCK CARD */}
         <motion.div
