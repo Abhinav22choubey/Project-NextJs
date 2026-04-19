@@ -3,6 +3,7 @@
 import { db } from "@/lib/db"
 import { clerkMiddleware, currentUser } from "@clerk/nextjs/server"
 import { success } from "zod";
+import { LinkFormData } from "../components/link-form";
 
 export const createLinkByUser=async (data:LinkFormData)=>{
     const user=await currentUser();
@@ -14,7 +15,7 @@ export const createLinkByUser=async (data:LinkFormData)=>{
         data:{
             title:data.title,
             url:data.url,
-            description:data.description,
+            description:data.description||"",
             clickcount:0,
             user:{
                 connect:{
