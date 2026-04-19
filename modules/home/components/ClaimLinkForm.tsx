@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Link, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { checkProfileUsernameAvailability, claimUserName } from "../actions";
+import { checkProfileUsernameAvailability, claimUserName } from "../../profile/actions";
 
 const ClaimLinkForm = () => {
   const router = useRouter();

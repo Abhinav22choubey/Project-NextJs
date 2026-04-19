@@ -2,7 +2,7 @@ import React from "react";
 import { onBoardUser } from "@/modules/auth/action";
 import LandingPage from "@/modules/home/components/Hero";
 
-import { getCurrentUsername } from "@/modules/home/actions";
+import { getCurrentUsername } from "@/modules/profile/actions";
 import { auth } from "@clerk/nextjs/server";
 
 const HomePage = async () => {

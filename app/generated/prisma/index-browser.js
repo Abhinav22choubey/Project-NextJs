@@ -133,6 +133,15 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LinkScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  url: 'url',
+  description: 'description',
+  clickcount: 'clickcount',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -150,7 +159,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Link: 'Link'
 };
 
 /**

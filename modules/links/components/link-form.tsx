@@ -21,6 +21,13 @@ import {
   X,
 } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
+
+const linkSchema=z.object({
+  title:z.string().min(1,"Title is required").max(100,"Title must be less than 100 characters"),
+  url:z.string().url("Please enter a valid url").min(1,"Url is required"),
+  description:z.string().max(200,"Description must be less than 200 characters").optional()
+})
+
 interface Profile{
     firstName:string,
     lastName:string,
@@ -42,6 +49,7 @@ const LinkForm = ({username,bio}:Props) => {
         bio:bio||"",
         imageUrl:currentUser?.user?.imageUrl||`https://ui-avatars.com/api/?name=${currentUser.user?.firstName}+${currentUser.user?.lastName}`,
     })
+    const [editingProfile,setEditingProfile]=useState(false)
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
        <Card className="border-2 border-dashed border-gray-200 hover:border-green-400 transition-colors">
@@ -68,65 +76,66 @@ const LinkForm = ({username,bio}:Props) => {
 
             <div className="flex-1 space-y-2">
               {editingProfile ? (
-                <form
-                  onSubmit={profileForm.handleSubmit(onProfileSubmit)}
-                  className="space-y-2"
-                >
-                  <div className="flex gap-2">
-                    <Input
-                      {...profileForm.register("firstName")}
-                      placeholder="First Name"
-                    />
-                    <Input
-                      {...profileForm.register("lastName")}
-                      placeholder="Last Name"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      {...profileForm.register("username")}
-                      placeholder="Username"
-                      className="font-semibold cursor-not-allowed"
-                      readOnly
-                      disabled
-                    />
-                    {profileForm.formState.errors.username && (
-                      <p className="text-sm text-red-500 mt-1">
-                        {profileForm.formState.errors.username.message}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <Textarea
-                      {...profileForm.register("bio")}
-                      placeholder="Add bio..."
-                      className="resize-none"
-                      rows={2}
-                    />
-                    {profileForm.formState.errors.bio && (
-                      <p className="text-sm text-red-500 mt-1">
-                        {profileForm.formState.errors.bio.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      type="submit"
-                      disabled={profileForm.formState.isSubmitting}
-                    >
-                      Save
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      type="button"
-                      onClick={() => setEditingProfile(false)}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </form>
+                <></>
+                // <form
+                //   onSubmit={profileForm.handleSubmit(onProfileSubmit)}
+                //   className="space-y-2"
+                // >
+                //   <div className="flex gap-2">
+                //     <Input
+                //       {...profileForm.register("firstName")}
+                //       placeholder="First Name"
+                //     />
+                //     <Input
+                //       {...profileForm.register("lastName")}
+                //       placeholder="Last Name"
+                //     />
+                //   </div>
+                //   <div>
+                //     <Input
+                //       {...profileForm.register("username")}
+                //       placeholder="Username"
+                //       className="font-semibold cursor-not-allowed"
+                //       readOnly
+                //       disabled
+                //     />
+                //     {profileForm.formState.errors.username && (
+                //       <p className="text-sm text-red-500 mt-1">
+                //         {profileForm.formState.errors.username.message}
+                //       </p>
+                //     )}
+                //   </div>
+                //   <div>
+                //     <Textarea
+                //       {...profileForm.register("bio")}
+                //       placeholder="Add bio..."
+                //       className="resize-none"
+                //       rows={2}
+                //     />
+                //     {profileForm.formState.errors.bio && (
+                //       <p className="text-sm text-red-500 mt-1">
+                //         {profileForm.formState.errors.bio.message}
+                //       </p>
+                //     )}
+                //   </div>
+                //   <div className="flex gap-2">
+                //     <Button
+                //       size="sm"
+                //       type="submit"
+                //       disabled={profileForm.formState.isSubmitting}
+                //     >
+                //       Save
+                //     </Button>
+                //     <Button
+                //       size="sm"
+                //       variant="outline"
+                //       type="button"
+                //       onClick={() => setEditingProfile(false)}
+                //     >
+                //       Cancel
+                //     </Button>
+                //   </div>
+                // </form>
               ) : (
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
@@ -153,7 +162,7 @@ const LinkForm = ({username,bio}:Props) => {
           {/* Social Links */}
           <div className="mt-4 flex gap-2 flex-wrap">
             {/* Display existing social links */}
-            {userSocialLinks.map((socialLink) => {
+            {/* {userSocialLinks.map((socialLink) => {
               const Icon = getSocialIcon(socialLink.platform);
               return (
                 <div key={socialLink.id} className="relative group">
@@ -165,7 +174,7 @@ const LinkForm = ({username,bio}:Props) => {
                   >
                     <Icon size={16} />
                   </Button>
-                  {/* Delete button on hover */}
+              
                   <Button
                     size="sm"
                     variant="destructive"
@@ -174,20 +183,20 @@ const LinkForm = ({username,bio}:Props) => {
                   >
                     <X size={10} />
                   </Button>
-                  {/* Edit on click (optional - you can add this functionality) */}
+               
                 </div>
               );
-            })}
+            })} */}
             
             {/* Add new social link button */}
-            <Button
+            {/* <Button
               variant="outline"
               size="sm"
               className="h-9 w-9 p-0 border-dashed bg-transparent"
               onClick={handleAddSocialLink}
             >
               <Plus size={16} />
-            </Button>
+            </Button> */}
           </div>
         </CardContent>
       </Card>

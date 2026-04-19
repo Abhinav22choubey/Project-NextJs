@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ClaimLinkForm from "./ClaimLinkForm";
 import { onBoardUser } from "@/modules/auth/action";
-import { getCurrentUsername } from "../actions";
+import { getCurrentUsername } from "../../profile/actions";
 import { useRouter } from "next/navigation";
 type User = Awaited<ReturnType<typeof onBoardUser>>;
 type Profile = Awaited<ReturnType<typeof getCurrentUsername>>;
