@@ -20,6 +20,7 @@ model User{
   imageUrl String?
 
   links Link[]
+  socialLinks SocialLink[]
 
   bio String? @db.VarChar(500)
   createdAt DateTime @default(now())
@@ -35,6 +36,19 @@ model Link{
   clickcount Int @default(0)
 
   userId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+}
+
+model SocialLink {
+  id String @id @default(cuid())
+  platform String 
+  url String
+  userId String
+    createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   user User @relation(fields: [userId],references: [id],onDelete: Cascade)
 }

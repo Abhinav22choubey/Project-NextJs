@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,31 +22,30 @@ import {
   X,
 } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
+import { createUserProfile } from "@/modules/profile/actions";
+import { createLinkByUser, deleteLink, editLink, addSocialLink, deleteSocialLink, editSocialLink } from "../actions";
 import { LinkCard, LinkFormWithPreview } from "./link-card";
+import { SocialLinkModal, SocialLinkFormData } from "./social-link-modal"; // Import the modal
 
-
+// Zod schemas
 const profileSchema = z.object({
   firstName: z
     .string()
     .min(1, "First name is required")
     .max(50, "First name must be less than 50 characters"),
-
   lastName: z
     .string()
     .max(50, "Last name must be less than 50 characters")
     .optional(),
-
   username: z
     .string()
     .min(3, "Username must be at least 3 characters")
     .max(30, "Username must be less than 30 characters")
     .regex(
       /^[a-zA-Z0-9_]+$/,
-      "Username can only contain letters, numbers, and underscores",
+      "Username can only contain letters, numbers, and underscores"
     ),
-
   bio: z.string().max(500, "Bio must be less than 500 characters").optional(),
-
   imageUrl: z.string().url("Please enter a valid image URL").optional(),
 });
 
@@ -54,21 +54,26 @@ const linkSchema = z.object({
     .string()
     .min(1, "Title is required")
     .max(100, "Title must be less than 100 characters"),
-  url: z.string().url("Please enter a valid url").min(1, "Url is required"),
+  url: z.string().url("Please enter a valid URL").min(1, "URL is required"),
   description: z
     .string()
     .max(200, "Description must be less than 200 characters")
     .optional(),
 });
 
+const socialLinkSchema = z.object({
+  platform: z.enum(["instagram", "youtube", "email"]),
+  url: z.string().url("Please enter a valid URL"),
+});
+
 export type ProfileFormData = z.infer<typeof profileSchema>;
 export type LinkFormData = z.infer<typeof linkSchema>;
-
+export type socialLinkSchema=z.infer<typeof socialLinkSchema>;
 interface Link {
   id: string;
   title: string;
   url: string;
-  description: string;
+  description?: string;
   clickCount: number;
 }
 
@@ -79,6 +84,13 @@ interface Profile {
   bio?: string;
   imageUrl?: string;
 }
+
+interface SocialLink {
+  id: string;
+  platform: "instagram" | "youtube" | "email";
+  url: string;
+}
+
 interface Props {
   username: string;
   bio: string;
@@ -90,23 +102,31 @@ interface Props {
     clickCount: number;
     createdAt: Date;
   }[];
+  socialLinks?: SocialLink[];
 }
 
-const LinkForm = ({ username, bio, link }: Props) => {
+const LinkForm = ({ username, bio, link, socialLinks: initialSocialLinks = [] }: Props) => {
   const currentUser = useUser();
+
+  const [isAddingLink, setIsAddingLink] = useState(false);
+  const [editingProfile, setEditingProfile] = useState(false);
+  const [links, setLinks] = useState<Link[]>(link || []);
+  const [userSocialLinks, setUserSocialLinks] = useState<SocialLink[]>(initialSocialLinks);
+  const [isSocialModalOpen, setIsSocialModalOpen] = useState(false);
+  const [editingSocialLink, setEditingSocialLink] = useState<SocialLink | null>(null);
+  
   const [profile, setProfile] = useState<Profile>({
     firstName: currentUser.user?.firstName || "",
     lastName: currentUser.user?.lastName || "",
     username: username || "",
     bio: bio || "",
     imageUrl:
-      currentUser?.user?.imageUrl ||
-      `https://ui-avatars.com/api/?name=${currentUser.user?.firstName}+${currentUser.user?.lastName}`,
+      currentUser.user?.imageUrl ||
+      `https://avatar.iran.liara.run/username?username=[${currentUser.user?.firstName}+${currentUser.user?.lastName}]`,
   });
-  const [editingProfile, setEditingProfile] = useState(false);
-  const [isAddingLink, setIsAddingLink] = useState(false);
-  const [links, setLinks] = useState<Link[]>(link || []);
+  const [editingLinkId, setEditingLinkId] = React.useState<string | null>(null);
 
+  // Profile form
   const profileForm = useForm<ProfileFormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
@@ -116,6 +136,8 @@ const LinkForm = ({ username, bio, link }: Props) => {
       bio: profile.bio || "",
     },
   });
+
+  // Link form
   const linkForm = useForm<LinkFormData>({
     resolver: zodResolver(linkSchema),
     defaultValues: {
@@ -125,11 +147,176 @@ const LinkForm = ({ username, bio, link }: Props) => {
     },
   });
 
-  const onProfileSubmit = async (data: ProfileFormData) => {};
-  const onLinkSubmit = async (data: LinkFormData) => {};
+  // Profile submit handler
+  const onProfileSubmit = async (data: ProfileFormData) => {
+    try {
+      setProfile((prev) => ({ ...prev, ...data }));
+
+      const updatedProfile = await createUserProfile(data);
+
+      console.log("Updated Profile:", updatedProfile);
+      toast.success("Profile updated successfully!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      toast.error("Failed to update profile.");
+    } finally {
+      profileForm.reset();
+      setEditingProfile(false);
+    }
+  };
+
+  // Link submit handler
+  const onLinkSubmit = async (data: LinkFormData) => {
+    try {
+      const link = await createLinkByUser(data);
+      console.log("Created Link:", link);
+
+      if (link?.data?.id) {
+        setLinks((prev) => [
+          ...prev,
+          { id: link.data.id, ...data, clickCount: 0 },
+        ]);
+      }
+      toast.success("Link created successfully!");
+    } catch (error) {
+      console.error("Something Went wrong", error);
+      toast.error("Failed to create link.");
+    } finally {
+      linkForm.reset();
+      setIsAddingLink(false);
+    }
+  };
+
+ 
+  const onSocialLinkSubmit = async (data: SocialLinkFormData) => {
+    try {
+      if (editingSocialLink) {
+        
+        const result = await editSocialLink(data, editingSocialLink.id);
+        if (result?.sucess) {
+          setUserSocialLinks((prev) =>
+            prev.map((link) =>
+              link.id === editingSocialLink.id
+                ? { ...link, platform: data.platform, url: data.url }
+                : link
+            )
+          );
+          toast.success(`${data.platform} link updated successfully!`);
+        } else {
+          toast.error(result?.error || "Failed to update social link.");
+        }
+      } else {
+        // Add new social link
+        const result = await addSocialLink(data);
+        if (result?.sucess && result?.data) {
+          const newSocialLink: SocialLink = {
+            id: result.data.id,
+            platform: data.platform,
+            url: data.url,
+          };
+          setUserSocialLinks((prev) => [...prev, newSocialLink]);
+          toast.success(`${data.platform} link added successfully!`);
+        } else {
+          toast.error(result?.error || "Failed to add social link.");
+        }
+      }
+    } catch (error) {
+      console.error("Error saving social link:", error);
+      toast.error("Failed to save social link.");
+    } finally {
+      setEditingSocialLink(null);
+    }
+  };
+
+  // Delete link handler
+  const handleDeleteLink = async (linkId: string) => {
+    try {
+      // Delete the link
+      const deletedLink = await deleteLink(linkId);
+      console.log("Deleted Link:", deletedLink);
+      setLinks((prev) => prev.filter((link) => link.id !== linkId));
+      toast.success("Link deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting link:", error);
+      toast.error("Failed to delete link.");
+    }
+  };
+
+  // Edit link handler
+  const handleEditLink = (linkId: string) => {
+    setEditingLinkId(linkId);
+    setIsAddingLink(true);
+  };
+
+  const onEditLinkSubmit = async (data: LinkFormData) => {
+    if (!editingLinkId) return;
+    try {
+      const res = await editLink(data, editingLinkId);
+      if (res?.sucess) {
+        setLinks((prev) =>
+          prev.map((l) => (l.id === editingLinkId ? { ...l, ...data } : l))
+        );
+        toast.success("Link edited successfully!");
+      } else {
+        toast.error(res?.error || "Failed to edit link.");
+      }
+    } catch (error) {
+      console.error("Error editing link:", error);
+      toast.error("Failed to edit link.");
+    } finally {
+      setIsAddingLink(false);
+      setEditingLinkId(null);
+    }
+  };
+
+  // Social link handlers
+  const handleAddSocialLink = () => {
+    setEditingSocialLink(null);
+    setIsSocialModalOpen(true);
+  };
+
+  const handleEditSocialLink = (socialLink: SocialLink) => {
+    setEditingSocialLink(socialLink);
+    setIsSocialModalOpen(true);
+  };
+
+  const handleDeleteSocialLink = async (socialLinkId: string) => {
+    try {
+      const result = await deleteSocialLink(socialLinkId);
+      if (result?.sucess) {
+        setUserSocialLinks((prev) => prev.filter((link) => link.id !== socialLinkId));
+        toast.success("Social link removed successfully!");
+      } else {
+        toast.error(result?.error || "Failed to delete social link.");
+      }
+    } catch (error) {
+      console.error("Error deleting social link:", error);
+      toast.error("Failed to delete social link.");
+    }
+  };
+
+  const getSocialIcon = (platform: string) => {
+    switch (platform) {
+      case "instagram":
+        return FaInstagram;
+      case "youtube":
+        return FaYoutube;
+      case "email":
+        return Mail;
+      default:
+        return Mail;
+    }
+  };
+
+  const socialLinks = [
+    { platform: "instagram" as const, icon: Instagram },
+    { platform: "youtube" as const, icon: Youtube },
+    { platform: "email" as const, icon: Mail },
+  ];
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
+      {/* Profile Section */}
       <Card className="border-2 border-dashed border-gray-200 hover:border-green-400 transition-colors">
         <CardContent className="p-6">
           <div className="flex items-center gap-4">
@@ -239,7 +426,7 @@ const LinkForm = ({ username, bio, link }: Props) => {
           {/* Social Links */}
           <div className="mt-4 flex gap-2 flex-wrap">
             {/* Display existing social links */}
-            {/* {userSocialLinks.map((socialLink) => {
+            {userSocialLinks.map((socialLink) => {
               const Icon = getSocialIcon(socialLink.platform);
               return (
                 <div key={socialLink.id} className="relative group">
@@ -251,7 +438,7 @@ const LinkForm = ({ username, bio, link }: Props) => {
                   >
                     <Icon size={16} />
                   </Button>
-              
+                  {/* Delete button on hover */}
                   <Button
                     size="sm"
                     variant="destructive"
@@ -260,40 +447,96 @@ const LinkForm = ({ username, bio, link }: Props) => {
                   >
                     <X size={10} />
                   </Button>
-               
+                  {/* Edit on click (optional - you can add this functionality) */}
                 </div>
               );
-            })} */}
-
+            })}
+            
             {/* Add new social link button */}
-            {/* <Button
+            <Button
               variant="outline"
               size="sm"
               className="h-9 w-9 p-0 border-dashed bg-transparent"
               onClick={handleAddSocialLink}
             >
               <Plus size={16} />
-            </Button> */}
+            </Button>
           </div>
         </CardContent>
       </Card>
+
+      {/* Links Section */}
       <div className="space-y-3">
-              {
-                links.map((link)=>{
-                  <LinkCard
-                    key={link.id}
-                    link={link}
-                    // onDelete={handleDeleteLink}
-                    // onEdit={handleEditLink}
-                  />
-                })
-              }
-              {
-                isAddingLink?(
-                  <LinkFormWithPreview/>
-                ):(<></>)
-              }
+        {links.map((link, index) => (
+          <LinkCard
+            key={link.id}
+            link={link}
+            onDelete={handleDeleteLink}
+            onEdit={handleEditLink}
+          />
+        ))}
+
+        {/* Add New Link */}
+        {isAddingLink ? (
+          <LinkFormWithPreview
+            onCancel={() => {
+              setIsAddingLink(false);
+              setEditingLinkId(null);
+            }}
+            onSubmit={editingLinkId ? onEditLinkSubmit : onLinkSubmit}
+            defaultValues={
+              editingLinkId
+                ? links.find((l) => l.id === editingLinkId) || {
+                    title: "",
+                    url: "",
+                    description: "",
+                  }
+                : { title: "", url: "", description: "" }
+            }
+          />
+        ) : (
+          <Button
+            onClick={() => setIsAddingLink(true)}
+            className="w-full h-12 border-2 border-dashed border-gray-300 bg-white hover:bg-gray-50 dark:text-gray-200 text-gray-700 font-medium rounded-lg transition-colors"
+            variant="outline"
+          >
+            <Plus size={20} className="mr-2" />
+            Add Link
+          </Button>
+        )}
       </div>
+
+      {/* Bottom Actions */}
+      <div className="flex items-center justify-between pt-4 border-t">
+        <Button
+          variant="outline"
+          onClick={() => toast.success("Feature coming soon!")}
+          className="flex items-center gap-2 bg-transparent cursor-pointer"
+        >
+          <FolderPlus size={16} />
+          Add Collection
+        </Button>
+
+        <Button
+          variant="outline"
+          className="flex items-center gap-2 bg-transparent cursor-pointer"
+          onClick={() => toast.success("Feature coming soon!")}
+        >
+          <Archive size={16} />
+          View Archive
+        </Button>
+      </div>
+
+      {/* Social Link Modal */}
+      <SocialLinkModal
+        isOpen={isSocialModalOpen}
+        onClose={() => setIsSocialModalOpen(false)}
+        onSubmit={onSocialLinkSubmit}
+        defaultValues={editingSocialLink ? {
+          platform: editingSocialLink.platform,
+          url: editingSocialLink.url
+        } : undefined}
+      />
     </div>
   );
 };
