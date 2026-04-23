@@ -28,6 +28,16 @@ export type Link = $Result.DefaultSelection<Prisma.$LinkPayload>
  * 
  */
 export type SocialLink = $Result.DefaultSelection<Prisma.$SocialLinkPayload>
+/**
+ * Model LinkAnalytics
+ * 
+ */
+export type LinkAnalytics = $Result.DefaultSelection<Prisma.$LinkAnalyticsPayload>
+/**
+ * Model ProfileAnalytics
+ * 
+ */
+export type ProfileAnalytics = $Result.DefaultSelection<Prisma.$ProfileAnalyticsPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -179,6 +189,26 @@ export class PrismaClient<
     * ```
     */
   get socialLink(): Prisma.SocialLinkDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.linkAnalytics`: Exposes CRUD operations for the **LinkAnalytics** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LinkAnalytics
+    * const linkAnalytics = await prisma.linkAnalytics.findMany()
+    * ```
+    */
+  get linkAnalytics(): Prisma.LinkAnalyticsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.profileAnalytics`: Exposes CRUD operations for the **ProfileAnalytics** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProfileAnalytics
+    * const profileAnalytics = await prisma.profileAnalytics.findMany()
+    * ```
+    */
+  get profileAnalytics(): Prisma.ProfileAnalyticsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -615,7 +645,9 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Link: 'Link',
-    SocialLink: 'SocialLink'
+    SocialLink: 'SocialLink',
+    LinkAnalytics: 'LinkAnalytics',
+    ProfileAnalytics: 'ProfileAnalytics'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -631,7 +663,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "link" | "socialLink"
+      modelProps: "user" | "link" | "socialLink" | "linkAnalytics" | "profileAnalytics"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -857,6 +889,154 @@ export namespace Prisma {
           }
         }
       }
+      LinkAnalytics: {
+        payload: Prisma.$LinkAnalyticsPayload<ExtArgs>
+        fields: Prisma.LinkAnalyticsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LinkAnalyticsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LinkAnalyticsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          findFirst: {
+            args: Prisma.LinkAnalyticsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LinkAnalyticsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          findMany: {
+            args: Prisma.LinkAnalyticsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>[]
+          }
+          create: {
+            args: Prisma.LinkAnalyticsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          createMany: {
+            args: Prisma.LinkAnalyticsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LinkAnalyticsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>[]
+          }
+          delete: {
+            args: Prisma.LinkAnalyticsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          update: {
+            args: Prisma.LinkAnalyticsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          deleteMany: {
+            args: Prisma.LinkAnalyticsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LinkAnalyticsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LinkAnalyticsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>[]
+          }
+          upsert: {
+            args: Prisma.LinkAnalyticsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LinkAnalyticsPayload>
+          }
+          aggregate: {
+            args: Prisma.LinkAnalyticsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLinkAnalytics>
+          }
+          groupBy: {
+            args: Prisma.LinkAnalyticsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LinkAnalyticsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LinkAnalyticsCountArgs<ExtArgs>
+            result: $Utils.Optional<LinkAnalyticsCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProfileAnalytics: {
+        payload: Prisma.$ProfileAnalyticsPayload<ExtArgs>
+        fields: Prisma.ProfileAnalyticsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProfileAnalyticsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProfileAnalyticsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          findFirst: {
+            args: Prisma.ProfileAnalyticsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProfileAnalyticsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          findMany: {
+            args: Prisma.ProfileAnalyticsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>[]
+          }
+          create: {
+            args: Prisma.ProfileAnalyticsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          createMany: {
+            args: Prisma.ProfileAnalyticsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProfileAnalyticsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>[]
+          }
+          delete: {
+            args: Prisma.ProfileAnalyticsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          update: {
+            args: Prisma.ProfileAnalyticsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProfileAnalyticsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProfileAnalyticsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProfileAnalyticsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProfileAnalyticsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProfileAnalyticsPayload>
+          }
+          aggregate: {
+            args: Prisma.ProfileAnalyticsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProfileAnalytics>
+          }
+          groupBy: {
+            args: Prisma.ProfileAnalyticsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProfileAnalyticsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProfileAnalyticsCountArgs<ExtArgs>
+            result: $Utils.Optional<ProfileAnalyticsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -968,6 +1148,8 @@ export namespace Prisma {
     user?: UserOmit
     link?: LinkOmit
     socialLink?: SocialLinkOmit
+    linkAnalytics?: LinkAnalyticsOmit
+    profileAnalytics?: ProfileAnalyticsOmit
   }
 
   /* Types for Logging */
@@ -1050,11 +1232,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     links: number
     socialLinks: number
+    profileViews: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     links?: boolean | UserCountOutputTypeCountLinksArgs
     socialLinks?: boolean | UserCountOutputTypeCountSocialLinksArgs
+    profileViews?: boolean | UserCountOutputTypeCountProfileViewsArgs
   }
 
   // Custom InputTypes
@@ -1080,6 +1264,44 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountSocialLinksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SocialLinkWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProfileViewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProfileAnalyticsWhereInput
+  }
+
+
+  /**
+   * Count Type LinkCountOutputType
+   */
+
+  export type LinkCountOutputType = {
+    analytics: number
+  }
+
+  export type LinkCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    analytics?: boolean | LinkCountOutputTypeCountAnalyticsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LinkCountOutputType without action
+   */
+  export type LinkCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkCountOutputType
+     */
+    select?: LinkCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LinkCountOutputType without action
+   */
+  export type LinkCountOutputTypeCountAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LinkAnalyticsWhereInput
   }
 
 
@@ -1293,6 +1515,7 @@ export namespace Prisma {
     updatedAt?: boolean
     links?: boolean | User$linksArgs<ExtArgs>
     socialLinks?: boolean | User$socialLinksArgs<ExtArgs>
+    profileViews?: boolean | User$profileViewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1339,6 +1562,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     links?: boolean | User$linksArgs<ExtArgs>
     socialLinks?: boolean | User$socialLinksArgs<ExtArgs>
+    profileViews?: boolean | User$profileViewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1349,6 +1573,7 @@ export namespace Prisma {
     objects: {
       links: Prisma.$LinkPayload<ExtArgs>[]
       socialLinks: Prisma.$SocialLinkPayload<ExtArgs>[]
+      profileViews: Prisma.$ProfileAnalyticsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1757,6 +1982,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     links<T extends User$linksArgs<ExtArgs> = {}>(args?: Subset<T, User$linksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     socialLinks<T extends User$socialLinksArgs<ExtArgs> = {}>(args?: Subset<T, User$socialLinksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SocialLinkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profileViews<T extends User$profileViewsArgs<ExtArgs> = {}>(args?: Subset<T, User$profileViewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2237,6 +2463,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.profileViews
+   */
+  export type User$profileViewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    where?: ProfileAnalyticsWhereInput
+    orderBy?: ProfileAnalyticsOrderByWithRelationInput | ProfileAnalyticsOrderByWithRelationInput[]
+    cursor?: ProfileAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProfileAnalyticsScalarFieldEnum | ProfileAnalyticsScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2477,7 +2727,9 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    analytics?: boolean | Link$analyticsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | LinkCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["link"]>
 
   export type LinkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2517,7 +2769,9 @@ export namespace Prisma {
 
   export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "description" | "clickcount" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["link"]>
   export type LinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    analytics?: boolean | Link$analyticsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    _count?: boolean | LinkCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type LinkIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -2529,6 +2783,7 @@ export namespace Prisma {
   export type $LinkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Link"
     objects: {
+      analytics: Prisma.$LinkAnalyticsPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2934,6 +3189,7 @@ export namespace Prisma {
    */
   export interface Prisma__LinkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    analytics<T extends Link$analyticsArgs<ExtArgs> = {}>(args?: Subset<T, Link$analyticsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3370,6 +3626,30 @@ export namespace Prisma {
      * Limit how many Links to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Link.analytics
+   */
+  export type Link$analyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    where?: LinkAnalyticsWhereInput
+    orderBy?: LinkAnalyticsOrderByWithRelationInput | LinkAnalyticsOrderByWithRelationInput[]
+    cursor?: LinkAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LinkAnalyticsScalarFieldEnum | LinkAnalyticsScalarFieldEnum[]
   }
 
   /**
@@ -4468,6 +4748,2158 @@ export namespace Prisma {
 
 
   /**
+   * Model LinkAnalytics
+   */
+
+  export type AggregateLinkAnalytics = {
+    _count: LinkAnalyticsCountAggregateOutputType | null
+    _min: LinkAnalyticsMinAggregateOutputType | null
+    _max: LinkAnalyticsMaxAggregateOutputType | null
+  }
+
+  export type LinkAnalyticsMinAggregateOutputType = {
+    id: string | null
+    linkId: string | null
+    clickedAt: Date | null
+    clickerIp: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LinkAnalyticsMaxAggregateOutputType = {
+    id: string | null
+    linkId: string | null
+    clickedAt: Date | null
+    clickerIp: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type LinkAnalyticsCountAggregateOutputType = {
+    id: number
+    linkId: number
+    clickedAt: number
+    clickerIp: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type LinkAnalyticsMinAggregateInputType = {
+    id?: true
+    linkId?: true
+    clickedAt?: true
+    clickerIp?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LinkAnalyticsMaxAggregateInputType = {
+    id?: true
+    linkId?: true
+    clickedAt?: true
+    clickerIp?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type LinkAnalyticsCountAggregateInputType = {
+    id?: true
+    linkId?: true
+    clickedAt?: true
+    clickerIp?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type LinkAnalyticsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LinkAnalytics to aggregate.
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LinkAnalytics to fetch.
+     */
+    orderBy?: LinkAnalyticsOrderByWithRelationInput | LinkAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LinkAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LinkAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LinkAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LinkAnalytics
+    **/
+    _count?: true | LinkAnalyticsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LinkAnalyticsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LinkAnalyticsMaxAggregateInputType
+  }
+
+  export type GetLinkAnalyticsAggregateType<T extends LinkAnalyticsAggregateArgs> = {
+        [P in keyof T & keyof AggregateLinkAnalytics]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLinkAnalytics[P]>
+      : GetScalarType<T[P], AggregateLinkAnalytics[P]>
+  }
+
+
+
+
+  export type LinkAnalyticsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LinkAnalyticsWhereInput
+    orderBy?: LinkAnalyticsOrderByWithAggregationInput | LinkAnalyticsOrderByWithAggregationInput[]
+    by: LinkAnalyticsScalarFieldEnum[] | LinkAnalyticsScalarFieldEnum
+    having?: LinkAnalyticsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LinkAnalyticsCountAggregateInputType | true
+    _min?: LinkAnalyticsMinAggregateInputType
+    _max?: LinkAnalyticsMaxAggregateInputType
+  }
+
+  export type LinkAnalyticsGroupByOutputType = {
+    id: string
+    linkId: string
+    clickedAt: Date
+    clickerIp: string
+    createdAt: Date
+    updatedAt: Date
+    _count: LinkAnalyticsCountAggregateOutputType | null
+    _min: LinkAnalyticsMinAggregateOutputType | null
+    _max: LinkAnalyticsMaxAggregateOutputType | null
+  }
+
+  type GetLinkAnalyticsGroupByPayload<T extends LinkAnalyticsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LinkAnalyticsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LinkAnalyticsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LinkAnalyticsGroupByOutputType[P]>
+            : GetScalarType<T[P], LinkAnalyticsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LinkAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    linkId?: boolean
+    clickedAt?: boolean
+    clickerIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["linkAnalytics"]>
+
+  export type LinkAnalyticsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    linkId?: boolean
+    clickedAt?: boolean
+    clickerIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["linkAnalytics"]>
+
+  export type LinkAnalyticsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    linkId?: boolean
+    clickedAt?: boolean
+    clickerIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["linkAnalytics"]>
+
+  export type LinkAnalyticsSelectScalar = {
+    id?: boolean
+    linkId?: boolean
+    clickedAt?: boolean
+    clickerIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type LinkAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "linkId" | "clickedAt" | "clickerIp" | "createdAt" | "updatedAt", ExtArgs["result"]["linkAnalytics"]>
+  export type LinkAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }
+  export type LinkAnalyticsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }
+  export type LinkAnalyticsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    link?: boolean | LinkDefaultArgs<ExtArgs>
+  }
+
+  export type $LinkAnalyticsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LinkAnalytics"
+    objects: {
+      link: Prisma.$LinkPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      linkId: string
+      clickedAt: Date
+      clickerIp: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["linkAnalytics"]>
+    composites: {}
+  }
+
+  type LinkAnalyticsGetPayload<S extends boolean | null | undefined | LinkAnalyticsDefaultArgs> = $Result.GetResult<Prisma.$LinkAnalyticsPayload, S>
+
+  type LinkAnalyticsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LinkAnalyticsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LinkAnalyticsCountAggregateInputType | true
+    }
+
+  export interface LinkAnalyticsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LinkAnalytics'], meta: { name: 'LinkAnalytics' } }
+    /**
+     * Find zero or one LinkAnalytics that matches the filter.
+     * @param {LinkAnalyticsFindUniqueArgs} args - Arguments to find a LinkAnalytics
+     * @example
+     * // Get one LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LinkAnalyticsFindUniqueArgs>(args: SelectSubset<T, LinkAnalyticsFindUniqueArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LinkAnalytics that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LinkAnalyticsFindUniqueOrThrowArgs} args - Arguments to find a LinkAnalytics
+     * @example
+     * // Get one LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LinkAnalyticsFindUniqueOrThrowArgs>(args: SelectSubset<T, LinkAnalyticsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LinkAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsFindFirstArgs} args - Arguments to find a LinkAnalytics
+     * @example
+     * // Get one LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LinkAnalyticsFindFirstArgs>(args?: SelectSubset<T, LinkAnalyticsFindFirstArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LinkAnalytics that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsFindFirstOrThrowArgs} args - Arguments to find a LinkAnalytics
+     * @example
+     * // Get one LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LinkAnalyticsFindFirstOrThrowArgs>(args?: SelectSubset<T, LinkAnalyticsFindFirstOrThrowArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LinkAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findMany()
+     * 
+     * // Get first 10 LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const linkAnalyticsWithIdOnly = await prisma.linkAnalytics.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LinkAnalyticsFindManyArgs>(args?: SelectSubset<T, LinkAnalyticsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LinkAnalytics.
+     * @param {LinkAnalyticsCreateArgs} args - Arguments to create a LinkAnalytics.
+     * @example
+     * // Create one LinkAnalytics
+     * const LinkAnalytics = await prisma.linkAnalytics.create({
+     *   data: {
+     *     // ... data to create a LinkAnalytics
+     *   }
+     * })
+     * 
+     */
+    create<T extends LinkAnalyticsCreateArgs>(args: SelectSubset<T, LinkAnalyticsCreateArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LinkAnalytics.
+     * @param {LinkAnalyticsCreateManyArgs} args - Arguments to create many LinkAnalytics.
+     * @example
+     * // Create many LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LinkAnalyticsCreateManyArgs>(args?: SelectSubset<T, LinkAnalyticsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LinkAnalytics and returns the data saved in the database.
+     * @param {LinkAnalyticsCreateManyAndReturnArgs} args - Arguments to create many LinkAnalytics.
+     * @example
+     * // Create many LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LinkAnalytics and only return the `id`
+     * const linkAnalyticsWithIdOnly = await prisma.linkAnalytics.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LinkAnalyticsCreateManyAndReturnArgs>(args?: SelectSubset<T, LinkAnalyticsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LinkAnalytics.
+     * @param {LinkAnalyticsDeleteArgs} args - Arguments to delete one LinkAnalytics.
+     * @example
+     * // Delete one LinkAnalytics
+     * const LinkAnalytics = await prisma.linkAnalytics.delete({
+     *   where: {
+     *     // ... filter to delete one LinkAnalytics
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LinkAnalyticsDeleteArgs>(args: SelectSubset<T, LinkAnalyticsDeleteArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LinkAnalytics.
+     * @param {LinkAnalyticsUpdateArgs} args - Arguments to update one LinkAnalytics.
+     * @example
+     * // Update one LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LinkAnalyticsUpdateArgs>(args: SelectSubset<T, LinkAnalyticsUpdateArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LinkAnalytics.
+     * @param {LinkAnalyticsDeleteManyArgs} args - Arguments to filter LinkAnalytics to delete.
+     * @example
+     * // Delete a few LinkAnalytics
+     * const { count } = await prisma.linkAnalytics.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LinkAnalyticsDeleteManyArgs>(args?: SelectSubset<T, LinkAnalyticsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LinkAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LinkAnalyticsUpdateManyArgs>(args: SelectSubset<T, LinkAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LinkAnalytics and returns the data updated in the database.
+     * @param {LinkAnalyticsUpdateManyAndReturnArgs} args - Arguments to update many LinkAnalytics.
+     * @example
+     * // Update many LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LinkAnalytics and only return the `id`
+     * const linkAnalyticsWithIdOnly = await prisma.linkAnalytics.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LinkAnalyticsUpdateManyAndReturnArgs>(args: SelectSubset<T, LinkAnalyticsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LinkAnalytics.
+     * @param {LinkAnalyticsUpsertArgs} args - Arguments to update or create a LinkAnalytics.
+     * @example
+     * // Update or create a LinkAnalytics
+     * const linkAnalytics = await prisma.linkAnalytics.upsert({
+     *   create: {
+     *     // ... data to create a LinkAnalytics
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LinkAnalytics we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LinkAnalyticsUpsertArgs>(args: SelectSubset<T, LinkAnalyticsUpsertArgs<ExtArgs>>): Prisma__LinkAnalyticsClient<$Result.GetResult<Prisma.$LinkAnalyticsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LinkAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsCountArgs} args - Arguments to filter LinkAnalytics to count.
+     * @example
+     * // Count the number of LinkAnalytics
+     * const count = await prisma.linkAnalytics.count({
+     *   where: {
+     *     // ... the filter for the LinkAnalytics we want to count
+     *   }
+     * })
+    **/
+    count<T extends LinkAnalyticsCountArgs>(
+      args?: Subset<T, LinkAnalyticsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LinkAnalyticsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LinkAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LinkAnalyticsAggregateArgs>(args: Subset<T, LinkAnalyticsAggregateArgs>): Prisma.PrismaPromise<GetLinkAnalyticsAggregateType<T>>
+
+    /**
+     * Group by LinkAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LinkAnalyticsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LinkAnalyticsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LinkAnalyticsGroupByArgs['orderBy'] }
+        : { orderBy?: LinkAnalyticsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LinkAnalyticsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLinkAnalyticsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LinkAnalytics model
+   */
+  readonly fields: LinkAnalyticsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LinkAnalytics.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LinkAnalyticsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    link<T extends LinkDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LinkDefaultArgs<ExtArgs>>): Prisma__LinkClient<$Result.GetResult<Prisma.$LinkPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LinkAnalytics model
+   */
+  interface LinkAnalyticsFieldRefs {
+    readonly id: FieldRef<"LinkAnalytics", 'String'>
+    readonly linkId: FieldRef<"LinkAnalytics", 'String'>
+    readonly clickedAt: FieldRef<"LinkAnalytics", 'DateTime'>
+    readonly clickerIp: FieldRef<"LinkAnalytics", 'String'>
+    readonly createdAt: FieldRef<"LinkAnalytics", 'DateTime'>
+    readonly updatedAt: FieldRef<"LinkAnalytics", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LinkAnalytics findUnique
+   */
+  export type LinkAnalyticsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which LinkAnalytics to fetch.
+     */
+    where: LinkAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * LinkAnalytics findUniqueOrThrow
+   */
+  export type LinkAnalyticsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which LinkAnalytics to fetch.
+     */
+    where: LinkAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * LinkAnalytics findFirst
+   */
+  export type LinkAnalyticsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which LinkAnalytics to fetch.
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LinkAnalytics to fetch.
+     */
+    orderBy?: LinkAnalyticsOrderByWithRelationInput | LinkAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LinkAnalytics.
+     */
+    cursor?: LinkAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LinkAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LinkAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LinkAnalytics.
+     */
+    distinct?: LinkAnalyticsScalarFieldEnum | LinkAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * LinkAnalytics findFirstOrThrow
+   */
+  export type LinkAnalyticsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which LinkAnalytics to fetch.
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LinkAnalytics to fetch.
+     */
+    orderBy?: LinkAnalyticsOrderByWithRelationInput | LinkAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LinkAnalytics.
+     */
+    cursor?: LinkAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LinkAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LinkAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LinkAnalytics.
+     */
+    distinct?: LinkAnalyticsScalarFieldEnum | LinkAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * LinkAnalytics findMany
+   */
+  export type LinkAnalyticsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which LinkAnalytics to fetch.
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LinkAnalytics to fetch.
+     */
+    orderBy?: LinkAnalyticsOrderByWithRelationInput | LinkAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LinkAnalytics.
+     */
+    cursor?: LinkAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LinkAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LinkAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LinkAnalytics.
+     */
+    distinct?: LinkAnalyticsScalarFieldEnum | LinkAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * LinkAnalytics create
+   */
+  export type LinkAnalyticsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LinkAnalytics.
+     */
+    data: XOR<LinkAnalyticsCreateInput, LinkAnalyticsUncheckedCreateInput>
+  }
+
+  /**
+   * LinkAnalytics createMany
+   */
+  export type LinkAnalyticsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LinkAnalytics.
+     */
+    data: LinkAnalyticsCreateManyInput | LinkAnalyticsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LinkAnalytics createManyAndReturn
+   */
+  export type LinkAnalyticsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to create many LinkAnalytics.
+     */
+    data: LinkAnalyticsCreateManyInput | LinkAnalyticsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LinkAnalytics update
+   */
+  export type LinkAnalyticsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LinkAnalytics.
+     */
+    data: XOR<LinkAnalyticsUpdateInput, LinkAnalyticsUncheckedUpdateInput>
+    /**
+     * Choose, which LinkAnalytics to update.
+     */
+    where: LinkAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * LinkAnalytics updateMany
+   */
+  export type LinkAnalyticsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LinkAnalytics.
+     */
+    data: XOR<LinkAnalyticsUpdateManyMutationInput, LinkAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which LinkAnalytics to update
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * Limit how many LinkAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LinkAnalytics updateManyAndReturn
+   */
+  export type LinkAnalyticsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to update LinkAnalytics.
+     */
+    data: XOR<LinkAnalyticsUpdateManyMutationInput, LinkAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which LinkAnalytics to update
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * Limit how many LinkAnalytics to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LinkAnalytics upsert
+   */
+  export type LinkAnalyticsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LinkAnalytics to update in case it exists.
+     */
+    where: LinkAnalyticsWhereUniqueInput
+    /**
+     * In case the LinkAnalytics found by the `where` argument doesn't exist, create a new LinkAnalytics with this data.
+     */
+    create: XOR<LinkAnalyticsCreateInput, LinkAnalyticsUncheckedCreateInput>
+    /**
+     * In case the LinkAnalytics was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LinkAnalyticsUpdateInput, LinkAnalyticsUncheckedUpdateInput>
+  }
+
+  /**
+   * LinkAnalytics delete
+   */
+  export type LinkAnalyticsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter which LinkAnalytics to delete.
+     */
+    where: LinkAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * LinkAnalytics deleteMany
+   */
+  export type LinkAnalyticsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LinkAnalytics to delete
+     */
+    where?: LinkAnalyticsWhereInput
+    /**
+     * Limit how many LinkAnalytics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LinkAnalytics without action
+   */
+  export type LinkAnalyticsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LinkAnalytics
+     */
+    select?: LinkAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LinkAnalytics
+     */
+    omit?: LinkAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LinkAnalyticsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ProfileAnalytics
+   */
+
+  export type AggregateProfileAnalytics = {
+    _count: ProfileAnalyticsCountAggregateOutputType | null
+    _min: ProfileAnalyticsMinAggregateOutputType | null
+    _max: ProfileAnalyticsMaxAggregateOutputType | null
+  }
+
+  export type ProfileAnalyticsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    visitedAt: Date | null
+    visitorIp: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProfileAnalyticsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    visitedAt: Date | null
+    visitorIp: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProfileAnalyticsCountAggregateOutputType = {
+    id: number
+    userId: number
+    visitedAt: number
+    visitorIp: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProfileAnalyticsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    visitedAt?: true
+    visitorIp?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProfileAnalyticsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    visitedAt?: true
+    visitorIp?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProfileAnalyticsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    visitedAt?: true
+    visitorIp?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProfileAnalyticsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProfileAnalytics to aggregate.
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProfileAnalytics to fetch.
+     */
+    orderBy?: ProfileAnalyticsOrderByWithRelationInput | ProfileAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProfileAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProfileAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProfileAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProfileAnalytics
+    **/
+    _count?: true | ProfileAnalyticsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProfileAnalyticsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProfileAnalyticsMaxAggregateInputType
+  }
+
+  export type GetProfileAnalyticsAggregateType<T extends ProfileAnalyticsAggregateArgs> = {
+        [P in keyof T & keyof AggregateProfileAnalytics]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProfileAnalytics[P]>
+      : GetScalarType<T[P], AggregateProfileAnalytics[P]>
+  }
+
+
+
+
+  export type ProfileAnalyticsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProfileAnalyticsWhereInput
+    orderBy?: ProfileAnalyticsOrderByWithAggregationInput | ProfileAnalyticsOrderByWithAggregationInput[]
+    by: ProfileAnalyticsScalarFieldEnum[] | ProfileAnalyticsScalarFieldEnum
+    having?: ProfileAnalyticsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProfileAnalyticsCountAggregateInputType | true
+    _min?: ProfileAnalyticsMinAggregateInputType
+    _max?: ProfileAnalyticsMaxAggregateInputType
+  }
+
+  export type ProfileAnalyticsGroupByOutputType = {
+    id: string
+    userId: string
+    visitedAt: Date
+    visitorIp: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ProfileAnalyticsCountAggregateOutputType | null
+    _min: ProfileAnalyticsMinAggregateOutputType | null
+    _max: ProfileAnalyticsMaxAggregateOutputType | null
+  }
+
+  type GetProfileAnalyticsGroupByPayload<T extends ProfileAnalyticsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProfileAnalyticsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProfileAnalyticsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProfileAnalyticsGroupByOutputType[P]>
+            : GetScalarType<T[P], ProfileAnalyticsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProfileAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    visitedAt?: boolean
+    visitorIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profileAnalytics"]>
+
+  export type ProfileAnalyticsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    visitedAt?: boolean
+    visitorIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profileAnalytics"]>
+
+  export type ProfileAnalyticsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    visitedAt?: boolean
+    visitorIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["profileAnalytics"]>
+
+  export type ProfileAnalyticsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    visitedAt?: boolean
+    visitorIp?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ProfileAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "visitedAt" | "visitorIp" | "createdAt" | "updatedAt", ExtArgs["result"]["profileAnalytics"]>
+  export type ProfileAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileAnalyticsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileAnalyticsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProfileAnalyticsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProfileAnalytics"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      visitedAt: Date
+      visitorIp: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["profileAnalytics"]>
+    composites: {}
+  }
+
+  type ProfileAnalyticsGetPayload<S extends boolean | null | undefined | ProfileAnalyticsDefaultArgs> = $Result.GetResult<Prisma.$ProfileAnalyticsPayload, S>
+
+  type ProfileAnalyticsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProfileAnalyticsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProfileAnalyticsCountAggregateInputType | true
+    }
+
+  export interface ProfileAnalyticsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProfileAnalytics'], meta: { name: 'ProfileAnalytics' } }
+    /**
+     * Find zero or one ProfileAnalytics that matches the filter.
+     * @param {ProfileAnalyticsFindUniqueArgs} args - Arguments to find a ProfileAnalytics
+     * @example
+     * // Get one ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProfileAnalyticsFindUniqueArgs>(args: SelectSubset<T, ProfileAnalyticsFindUniqueArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProfileAnalytics that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProfileAnalyticsFindUniqueOrThrowArgs} args - Arguments to find a ProfileAnalytics
+     * @example
+     * // Get one ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProfileAnalyticsFindUniqueOrThrowArgs>(args: SelectSubset<T, ProfileAnalyticsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProfileAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsFindFirstArgs} args - Arguments to find a ProfileAnalytics
+     * @example
+     * // Get one ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProfileAnalyticsFindFirstArgs>(args?: SelectSubset<T, ProfileAnalyticsFindFirstArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProfileAnalytics that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsFindFirstOrThrowArgs} args - Arguments to find a ProfileAnalytics
+     * @example
+     * // Get one ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProfileAnalyticsFindFirstOrThrowArgs>(args?: SelectSubset<T, ProfileAnalyticsFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProfileAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findMany()
+     * 
+     * // Get first 10 ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const profileAnalyticsWithIdOnly = await prisma.profileAnalytics.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProfileAnalyticsFindManyArgs>(args?: SelectSubset<T, ProfileAnalyticsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProfileAnalytics.
+     * @param {ProfileAnalyticsCreateArgs} args - Arguments to create a ProfileAnalytics.
+     * @example
+     * // Create one ProfileAnalytics
+     * const ProfileAnalytics = await prisma.profileAnalytics.create({
+     *   data: {
+     *     // ... data to create a ProfileAnalytics
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProfileAnalyticsCreateArgs>(args: SelectSubset<T, ProfileAnalyticsCreateArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProfileAnalytics.
+     * @param {ProfileAnalyticsCreateManyArgs} args - Arguments to create many ProfileAnalytics.
+     * @example
+     * // Create many ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProfileAnalyticsCreateManyArgs>(args?: SelectSubset<T, ProfileAnalyticsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ProfileAnalytics and returns the data saved in the database.
+     * @param {ProfileAnalyticsCreateManyAndReturnArgs} args - Arguments to create many ProfileAnalytics.
+     * @example
+     * // Create many ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ProfileAnalytics and only return the `id`
+     * const profileAnalyticsWithIdOnly = await prisma.profileAnalytics.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProfileAnalyticsCreateManyAndReturnArgs>(args?: SelectSubset<T, ProfileAnalyticsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ProfileAnalytics.
+     * @param {ProfileAnalyticsDeleteArgs} args - Arguments to delete one ProfileAnalytics.
+     * @example
+     * // Delete one ProfileAnalytics
+     * const ProfileAnalytics = await prisma.profileAnalytics.delete({
+     *   where: {
+     *     // ... filter to delete one ProfileAnalytics
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProfileAnalyticsDeleteArgs>(args: SelectSubset<T, ProfileAnalyticsDeleteArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProfileAnalytics.
+     * @param {ProfileAnalyticsUpdateArgs} args - Arguments to update one ProfileAnalytics.
+     * @example
+     * // Update one ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProfileAnalyticsUpdateArgs>(args: SelectSubset<T, ProfileAnalyticsUpdateArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProfileAnalytics.
+     * @param {ProfileAnalyticsDeleteManyArgs} args - Arguments to filter ProfileAnalytics to delete.
+     * @example
+     * // Delete a few ProfileAnalytics
+     * const { count } = await prisma.profileAnalytics.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProfileAnalyticsDeleteManyArgs>(args?: SelectSubset<T, ProfileAnalyticsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProfileAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProfileAnalyticsUpdateManyArgs>(args: SelectSubset<T, ProfileAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProfileAnalytics and returns the data updated in the database.
+     * @param {ProfileAnalyticsUpdateManyAndReturnArgs} args - Arguments to update many ProfileAnalytics.
+     * @example
+     * // Update many ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ProfileAnalytics and only return the `id`
+     * const profileAnalyticsWithIdOnly = await prisma.profileAnalytics.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProfileAnalyticsUpdateManyAndReturnArgs>(args: SelectSubset<T, ProfileAnalyticsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ProfileAnalytics.
+     * @param {ProfileAnalyticsUpsertArgs} args - Arguments to update or create a ProfileAnalytics.
+     * @example
+     * // Update or create a ProfileAnalytics
+     * const profileAnalytics = await prisma.profileAnalytics.upsert({
+     *   create: {
+     *     // ... data to create a ProfileAnalytics
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProfileAnalytics we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProfileAnalyticsUpsertArgs>(args: SelectSubset<T, ProfileAnalyticsUpsertArgs<ExtArgs>>): Prisma__ProfileAnalyticsClient<$Result.GetResult<Prisma.$ProfileAnalyticsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ProfileAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsCountArgs} args - Arguments to filter ProfileAnalytics to count.
+     * @example
+     * // Count the number of ProfileAnalytics
+     * const count = await prisma.profileAnalytics.count({
+     *   where: {
+     *     // ... the filter for the ProfileAnalytics we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProfileAnalyticsCountArgs>(
+      args?: Subset<T, ProfileAnalyticsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProfileAnalyticsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProfileAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProfileAnalyticsAggregateArgs>(args: Subset<T, ProfileAnalyticsAggregateArgs>): Prisma.PrismaPromise<GetProfileAnalyticsAggregateType<T>>
+
+    /**
+     * Group by ProfileAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProfileAnalyticsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProfileAnalyticsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProfileAnalyticsGroupByArgs['orderBy'] }
+        : { orderBy?: ProfileAnalyticsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProfileAnalyticsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProfileAnalyticsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProfileAnalytics model
+   */
+  readonly fields: ProfileAnalyticsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProfileAnalytics.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProfileAnalyticsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ProfileAnalytics model
+   */
+  interface ProfileAnalyticsFieldRefs {
+    readonly id: FieldRef<"ProfileAnalytics", 'String'>
+    readonly userId: FieldRef<"ProfileAnalytics", 'String'>
+    readonly visitedAt: FieldRef<"ProfileAnalytics", 'DateTime'>
+    readonly visitorIp: FieldRef<"ProfileAnalytics", 'String'>
+    readonly createdAt: FieldRef<"ProfileAnalytics", 'DateTime'>
+    readonly updatedAt: FieldRef<"ProfileAnalytics", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ProfileAnalytics findUnique
+   */
+  export type ProfileAnalyticsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProfileAnalytics to fetch.
+     */
+    where: ProfileAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * ProfileAnalytics findUniqueOrThrow
+   */
+  export type ProfileAnalyticsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProfileAnalytics to fetch.
+     */
+    where: ProfileAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * ProfileAnalytics findFirst
+   */
+  export type ProfileAnalyticsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProfileAnalytics to fetch.
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProfileAnalytics to fetch.
+     */
+    orderBy?: ProfileAnalyticsOrderByWithRelationInput | ProfileAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProfileAnalytics.
+     */
+    cursor?: ProfileAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProfileAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProfileAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProfileAnalytics.
+     */
+    distinct?: ProfileAnalyticsScalarFieldEnum | ProfileAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * ProfileAnalytics findFirstOrThrow
+   */
+  export type ProfileAnalyticsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProfileAnalytics to fetch.
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProfileAnalytics to fetch.
+     */
+    orderBy?: ProfileAnalyticsOrderByWithRelationInput | ProfileAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProfileAnalytics.
+     */
+    cursor?: ProfileAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProfileAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProfileAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProfileAnalytics.
+     */
+    distinct?: ProfileAnalyticsScalarFieldEnum | ProfileAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * ProfileAnalytics findMany
+   */
+  export type ProfileAnalyticsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProfileAnalytics to fetch.
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProfileAnalytics to fetch.
+     */
+    orderBy?: ProfileAnalyticsOrderByWithRelationInput | ProfileAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProfileAnalytics.
+     */
+    cursor?: ProfileAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProfileAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProfileAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProfileAnalytics.
+     */
+    distinct?: ProfileAnalyticsScalarFieldEnum | ProfileAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * ProfileAnalytics create
+   */
+  export type ProfileAnalyticsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProfileAnalytics.
+     */
+    data: XOR<ProfileAnalyticsCreateInput, ProfileAnalyticsUncheckedCreateInput>
+  }
+
+  /**
+   * ProfileAnalytics createMany
+   */
+  export type ProfileAnalyticsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProfileAnalytics.
+     */
+    data: ProfileAnalyticsCreateManyInput | ProfileAnalyticsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ProfileAnalytics createManyAndReturn
+   */
+  export type ProfileAnalyticsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to create many ProfileAnalytics.
+     */
+    data: ProfileAnalyticsCreateManyInput | ProfileAnalyticsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProfileAnalytics update
+   */
+  export type ProfileAnalyticsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProfileAnalytics.
+     */
+    data: XOR<ProfileAnalyticsUpdateInput, ProfileAnalyticsUncheckedUpdateInput>
+    /**
+     * Choose, which ProfileAnalytics to update.
+     */
+    where: ProfileAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * ProfileAnalytics updateMany
+   */
+  export type ProfileAnalyticsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProfileAnalytics.
+     */
+    data: XOR<ProfileAnalyticsUpdateManyMutationInput, ProfileAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which ProfileAnalytics to update
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * Limit how many ProfileAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProfileAnalytics updateManyAndReturn
+   */
+  export type ProfileAnalyticsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to update ProfileAnalytics.
+     */
+    data: XOR<ProfileAnalyticsUpdateManyMutationInput, ProfileAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which ProfileAnalytics to update
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * Limit how many ProfileAnalytics to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ProfileAnalytics upsert
+   */
+  export type ProfileAnalyticsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProfileAnalytics to update in case it exists.
+     */
+    where: ProfileAnalyticsWhereUniqueInput
+    /**
+     * In case the ProfileAnalytics found by the `where` argument doesn't exist, create a new ProfileAnalytics with this data.
+     */
+    create: XOR<ProfileAnalyticsCreateInput, ProfileAnalyticsUncheckedCreateInput>
+    /**
+     * In case the ProfileAnalytics was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProfileAnalyticsUpdateInput, ProfileAnalyticsUncheckedUpdateInput>
+  }
+
+  /**
+   * ProfileAnalytics delete
+   */
+  export type ProfileAnalyticsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter which ProfileAnalytics to delete.
+     */
+    where: ProfileAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * ProfileAnalytics deleteMany
+   */
+  export type ProfileAnalyticsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProfileAnalytics to delete
+     */
+    where?: ProfileAnalyticsWhereInput
+    /**
+     * Limit how many ProfileAnalytics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ProfileAnalytics without action
+   */
+  export type ProfileAnalyticsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProfileAnalytics
+     */
+    select?: ProfileAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProfileAnalytics
+     */
+    omit?: ProfileAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileAnalyticsInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4521,6 +6953,30 @@ export namespace Prisma {
   };
 
   export type SocialLinkScalarFieldEnum = (typeof SocialLinkScalarFieldEnum)[keyof typeof SocialLinkScalarFieldEnum]
+
+
+  export const LinkAnalyticsScalarFieldEnum: {
+    id: 'id',
+    linkId: 'linkId',
+    clickedAt: 'clickedAt',
+    clickerIp: 'clickerIp',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type LinkAnalyticsScalarFieldEnum = (typeof LinkAnalyticsScalarFieldEnum)[keyof typeof LinkAnalyticsScalarFieldEnum]
+
+
+  export const ProfileAnalyticsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    visitedAt: 'visitedAt',
+    visitorIp: 'visitorIp',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProfileAnalyticsScalarFieldEnum = (typeof ProfileAnalyticsScalarFieldEnum)[keyof typeof ProfileAnalyticsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4627,6 +7083,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     links?: LinkListRelationFilter
     socialLinks?: SocialLinkListRelationFilter
+    profileViews?: ProfileAnalyticsListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4642,6 +7099,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     links?: LinkOrderByRelationAggregateInput
     socialLinks?: SocialLinkOrderByRelationAggregateInput
+    profileViews?: ProfileAnalyticsOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4660,6 +7118,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"User"> | Date | string
     links?: LinkListRelationFilter
     socialLinks?: SocialLinkListRelationFilter
+    profileViews?: ProfileAnalyticsListRelationFilter
   }, "id" | "clerkId" | "email" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -4706,6 +7165,7 @@ export namespace Prisma {
     userId?: StringFilter<"Link"> | string
     createdAt?: DateTimeFilter<"Link"> | Date | string
     updatedAt?: DateTimeFilter<"Link"> | Date | string
+    analytics?: LinkAnalyticsListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -4718,6 +7178,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    analytics?: LinkAnalyticsOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
   }
 
@@ -4733,6 +7194,7 @@ export namespace Prisma {
     userId?: StringFilter<"Link"> | string
     createdAt?: DateTimeFilter<"Link"> | Date | string
     updatedAt?: DateTimeFilter<"Link"> | Date | string
+    analytics?: LinkAnalyticsListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -4826,6 +7288,127 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"SocialLink"> | Date | string
   }
 
+  export type LinkAnalyticsWhereInput = {
+    AND?: LinkAnalyticsWhereInput | LinkAnalyticsWhereInput[]
+    OR?: LinkAnalyticsWhereInput[]
+    NOT?: LinkAnalyticsWhereInput | LinkAnalyticsWhereInput[]
+    id?: StringFilter<"LinkAnalytics"> | string
+    linkId?: StringFilter<"LinkAnalytics"> | string
+    clickedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    clickerIp?: StringFilter<"LinkAnalytics"> | string
+    createdAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    link?: XOR<LinkScalarRelationFilter, LinkWhereInput>
+  }
+
+  export type LinkAnalyticsOrderByWithRelationInput = {
+    id?: SortOrder
+    linkId?: SortOrder
+    clickedAt?: SortOrder
+    clickerIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    link?: LinkOrderByWithRelationInput
+  }
+
+  export type LinkAnalyticsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    linkId_clickedAt_clickerIp?: LinkAnalyticsLinkIdClickedAtClickerIpCompoundUniqueInput
+    AND?: LinkAnalyticsWhereInput | LinkAnalyticsWhereInput[]
+    OR?: LinkAnalyticsWhereInput[]
+    NOT?: LinkAnalyticsWhereInput | LinkAnalyticsWhereInput[]
+    linkId?: StringFilter<"LinkAnalytics"> | string
+    clickedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    clickerIp?: StringFilter<"LinkAnalytics"> | string
+    createdAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    link?: XOR<LinkScalarRelationFilter, LinkWhereInput>
+  }, "id" | "linkId_clickedAt_clickerIp">
+
+  export type LinkAnalyticsOrderByWithAggregationInput = {
+    id?: SortOrder
+    linkId?: SortOrder
+    clickedAt?: SortOrder
+    clickerIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: LinkAnalyticsCountOrderByAggregateInput
+    _max?: LinkAnalyticsMaxOrderByAggregateInput
+    _min?: LinkAnalyticsMinOrderByAggregateInput
+  }
+
+  export type LinkAnalyticsScalarWhereWithAggregatesInput = {
+    AND?: LinkAnalyticsScalarWhereWithAggregatesInput | LinkAnalyticsScalarWhereWithAggregatesInput[]
+    OR?: LinkAnalyticsScalarWhereWithAggregatesInput[]
+    NOT?: LinkAnalyticsScalarWhereWithAggregatesInput | LinkAnalyticsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LinkAnalytics"> | string
+    linkId?: StringWithAggregatesFilter<"LinkAnalytics"> | string
+    clickedAt?: DateTimeWithAggregatesFilter<"LinkAnalytics"> | Date | string
+    clickerIp?: StringWithAggregatesFilter<"LinkAnalytics"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"LinkAnalytics"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"LinkAnalytics"> | Date | string
+  }
+
+  export type ProfileAnalyticsWhereInput = {
+    AND?: ProfileAnalyticsWhereInput | ProfileAnalyticsWhereInput[]
+    OR?: ProfileAnalyticsWhereInput[]
+    NOT?: ProfileAnalyticsWhereInput | ProfileAnalyticsWhereInput[]
+    id?: StringFilter<"ProfileAnalytics"> | string
+    userId?: StringFilter<"ProfileAnalytics"> | string
+    visitedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    visitorIp?: StringFilter<"ProfileAnalytics"> | string
+    createdAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ProfileAnalyticsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    visitedAt?: SortOrder
+    visitorIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ProfileAnalyticsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProfileAnalyticsWhereInput | ProfileAnalyticsWhereInput[]
+    OR?: ProfileAnalyticsWhereInput[]
+    NOT?: ProfileAnalyticsWhereInput | ProfileAnalyticsWhereInput[]
+    userId?: StringFilter<"ProfileAnalytics"> | string
+    visitedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    visitorIp?: StringFilter<"ProfileAnalytics"> | string
+    createdAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ProfileAnalyticsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    visitedAt?: SortOrder
+    visitorIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ProfileAnalyticsCountOrderByAggregateInput
+    _max?: ProfileAnalyticsMaxOrderByAggregateInput
+    _min?: ProfileAnalyticsMinOrderByAggregateInput
+  }
+
+  export type ProfileAnalyticsScalarWhereWithAggregatesInput = {
+    AND?: ProfileAnalyticsScalarWhereWithAggregatesInput | ProfileAnalyticsScalarWhereWithAggregatesInput[]
+    OR?: ProfileAnalyticsScalarWhereWithAggregatesInput[]
+    NOT?: ProfileAnalyticsScalarWhereWithAggregatesInput | ProfileAnalyticsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ProfileAnalytics"> | string
+    userId?: StringWithAggregatesFilter<"ProfileAnalytics"> | string
+    visitedAt?: DateTimeWithAggregatesFilter<"ProfileAnalytics"> | Date | string
+    visitorIp?: StringWithAggregatesFilter<"ProfileAnalytics"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"ProfileAnalytics"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"ProfileAnalytics"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     clerkId: string
@@ -4839,6 +7422,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     links?: LinkCreateNestedManyWithoutUserInput
     socialLinks?: SocialLinkCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4854,6 +7438,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     links?: LinkUncheckedCreateNestedManyWithoutUserInput
     socialLinks?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4869,6 +7454,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUpdateManyWithoutUserNestedInput
     socialLinks?: SocialLinkUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4884,6 +7470,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUncheckedUpdateManyWithoutUserNestedInput
     socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4933,6 +7520,7 @@ export namespace Prisma {
     clickcount?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    analytics?: LinkAnalyticsCreateNestedManyWithoutLinkInput
     user: UserCreateNestedOneWithoutLinksInput
   }
 
@@ -4945,6 +7533,7 @@ export namespace Prisma {
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    analytics?: LinkAnalyticsUncheckedCreateNestedManyWithoutLinkInput
   }
 
   export type LinkUpdateInput = {
@@ -4955,6 +7544,7 @@ export namespace Prisma {
     clickcount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    analytics?: LinkAnalyticsUpdateManyWithoutLinkNestedInput
     user?: UserUpdateOneRequiredWithoutLinksNestedInput
   }
 
@@ -4967,6 +7557,7 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    analytics?: LinkAnalyticsUncheckedUpdateManyWithoutLinkNestedInput
   }
 
   export type LinkCreateManyInput = {
@@ -5063,6 +7654,130 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LinkAnalyticsCreateInput = {
+    id?: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    link: LinkCreateNestedOneWithoutAnalyticsInput
+  }
+
+  export type LinkAnalyticsUncheckedCreateInput = {
+    id?: string
+    linkId: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkAnalyticsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    link?: LinkUpdateOneRequiredWithoutAnalyticsNestedInput
+  }
+
+  export type LinkAnalyticsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    linkId?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkAnalyticsCreateManyInput = {
+    id?: string
+    linkId: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkAnalyticsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkAnalyticsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    linkId?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsCreateInput = {
+    id?: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProfileViewsInput
+  }
+
+  export type ProfileAnalyticsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProfileAnalyticsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProfileViewsNestedInput
+  }
+
+  export type ProfileAnalyticsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsCreateManyInput = {
+    id?: string
+    userId: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProfileAnalyticsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -5116,6 +7831,12 @@ export namespace Prisma {
     none?: SocialLinkWhereInput
   }
 
+  export type ProfileAnalyticsListRelationFilter = {
+    every?: ProfileAnalyticsWhereInput
+    some?: ProfileAnalyticsWhereInput
+    none?: ProfileAnalyticsWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -5126,6 +7847,10 @@ export namespace Prisma {
   }
 
   export type SocialLinkOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProfileAnalyticsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5229,9 +7954,19 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type LinkAnalyticsListRelationFilter = {
+    every?: LinkAnalyticsWhereInput
+    some?: LinkAnalyticsWhereInput
+    none?: LinkAnalyticsWhereInput
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type LinkAnalyticsOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type LinkCountOrderByAggregateInput = {
@@ -5318,6 +8053,71 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type LinkScalarRelationFilter = {
+    is?: LinkWhereInput
+    isNot?: LinkWhereInput
+  }
+
+  export type LinkAnalyticsLinkIdClickedAtClickerIpCompoundUniqueInput = {
+    linkId: string
+    clickedAt: Date | string
+    clickerIp: string
+  }
+
+  export type LinkAnalyticsCountOrderByAggregateInput = {
+    id?: SortOrder
+    linkId?: SortOrder
+    clickedAt?: SortOrder
+    clickerIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LinkAnalyticsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    linkId?: SortOrder
+    clickedAt?: SortOrder
+    clickerIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type LinkAnalyticsMinOrderByAggregateInput = {
+    id?: SortOrder
+    linkId?: SortOrder
+    clickedAt?: SortOrder
+    clickerIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProfileAnalyticsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    visitedAt?: SortOrder
+    visitorIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProfileAnalyticsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    visitedAt?: SortOrder
+    visitorIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ProfileAnalyticsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    visitedAt?: SortOrder
+    visitorIp?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type LinkCreateNestedManyWithoutUserInput = {
     create?: XOR<LinkCreateWithoutUserInput, LinkUncheckedCreateWithoutUserInput> | LinkCreateWithoutUserInput[] | LinkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LinkCreateOrConnectWithoutUserInput | LinkCreateOrConnectWithoutUserInput[]
@@ -5332,6 +8132,13 @@ export namespace Prisma {
     connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
   }
 
+  export type ProfileAnalyticsCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput> | ProfileAnalyticsCreateWithoutUserInput[] | ProfileAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProfileAnalyticsCreateOrConnectWithoutUserInput | ProfileAnalyticsCreateOrConnectWithoutUserInput[]
+    createMany?: ProfileAnalyticsCreateManyUserInputEnvelope
+    connect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+  }
+
   export type LinkUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<LinkCreateWithoutUserInput, LinkUncheckedCreateWithoutUserInput> | LinkCreateWithoutUserInput[] | LinkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LinkCreateOrConnectWithoutUserInput | LinkCreateOrConnectWithoutUserInput[]
@@ -5344,6 +8151,13 @@ export namespace Prisma {
     connectOrCreate?: SocialLinkCreateOrConnectWithoutUserInput | SocialLinkCreateOrConnectWithoutUserInput[]
     createMany?: SocialLinkCreateManyUserInputEnvelope
     connect?: SocialLinkWhereUniqueInput | SocialLinkWhereUniqueInput[]
+  }
+
+  export type ProfileAnalyticsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput> | ProfileAnalyticsCreateWithoutUserInput[] | ProfileAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProfileAnalyticsCreateOrConnectWithoutUserInput | ProfileAnalyticsCreateOrConnectWithoutUserInput[]
+    createMany?: ProfileAnalyticsCreateManyUserInputEnvelope
+    connect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5386,6 +8200,20 @@ export namespace Prisma {
     deleteMany?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
   }
 
+  export type ProfileAnalyticsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput> | ProfileAnalyticsCreateWithoutUserInput[] | ProfileAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProfileAnalyticsCreateOrConnectWithoutUserInput | ProfileAnalyticsCreateOrConnectWithoutUserInput[]
+    upsert?: ProfileAnalyticsUpsertWithWhereUniqueWithoutUserInput | ProfileAnalyticsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProfileAnalyticsCreateManyUserInputEnvelope
+    set?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    disconnect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    delete?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    connect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    update?: ProfileAnalyticsUpdateWithWhereUniqueWithoutUserInput | ProfileAnalyticsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProfileAnalyticsUpdateManyWithWhereWithoutUserInput | ProfileAnalyticsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProfileAnalyticsScalarWhereInput | ProfileAnalyticsScalarWhereInput[]
+  }
+
   export type LinkUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<LinkCreateWithoutUserInput, LinkUncheckedCreateWithoutUserInput> | LinkCreateWithoutUserInput[] | LinkUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LinkCreateOrConnectWithoutUserInput | LinkCreateOrConnectWithoutUserInput[]
@@ -5414,10 +8242,38 @@ export namespace Prisma {
     deleteMany?: SocialLinkScalarWhereInput | SocialLinkScalarWhereInput[]
   }
 
+  export type ProfileAnalyticsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput> | ProfileAnalyticsCreateWithoutUserInput[] | ProfileAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProfileAnalyticsCreateOrConnectWithoutUserInput | ProfileAnalyticsCreateOrConnectWithoutUserInput[]
+    upsert?: ProfileAnalyticsUpsertWithWhereUniqueWithoutUserInput | ProfileAnalyticsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProfileAnalyticsCreateManyUserInputEnvelope
+    set?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    disconnect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    delete?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    connect?: ProfileAnalyticsWhereUniqueInput | ProfileAnalyticsWhereUniqueInput[]
+    update?: ProfileAnalyticsUpdateWithWhereUniqueWithoutUserInput | ProfileAnalyticsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProfileAnalyticsUpdateManyWithWhereWithoutUserInput | ProfileAnalyticsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProfileAnalyticsScalarWhereInput | ProfileAnalyticsScalarWhereInput[]
+  }
+
+  export type LinkAnalyticsCreateNestedManyWithoutLinkInput = {
+    create?: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput> | LinkAnalyticsCreateWithoutLinkInput[] | LinkAnalyticsUncheckedCreateWithoutLinkInput[]
+    connectOrCreate?: LinkAnalyticsCreateOrConnectWithoutLinkInput | LinkAnalyticsCreateOrConnectWithoutLinkInput[]
+    createMany?: LinkAnalyticsCreateManyLinkInputEnvelope
+    connect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutLinksInput = {
     create?: XOR<UserCreateWithoutLinksInput, UserUncheckedCreateWithoutLinksInput>
     connectOrCreate?: UserCreateOrConnectWithoutLinksInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type LinkAnalyticsUncheckedCreateNestedManyWithoutLinkInput = {
+    create?: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput> | LinkAnalyticsCreateWithoutLinkInput[] | LinkAnalyticsUncheckedCreateWithoutLinkInput[]
+    connectOrCreate?: LinkAnalyticsCreateOrConnectWithoutLinkInput | LinkAnalyticsCreateOrConnectWithoutLinkInput[]
+    createMany?: LinkAnalyticsCreateManyLinkInputEnvelope
+    connect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -5428,12 +8284,40 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type LinkAnalyticsUpdateManyWithoutLinkNestedInput = {
+    create?: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput> | LinkAnalyticsCreateWithoutLinkInput[] | LinkAnalyticsUncheckedCreateWithoutLinkInput[]
+    connectOrCreate?: LinkAnalyticsCreateOrConnectWithoutLinkInput | LinkAnalyticsCreateOrConnectWithoutLinkInput[]
+    upsert?: LinkAnalyticsUpsertWithWhereUniqueWithoutLinkInput | LinkAnalyticsUpsertWithWhereUniqueWithoutLinkInput[]
+    createMany?: LinkAnalyticsCreateManyLinkInputEnvelope
+    set?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    disconnect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    delete?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    connect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    update?: LinkAnalyticsUpdateWithWhereUniqueWithoutLinkInput | LinkAnalyticsUpdateWithWhereUniqueWithoutLinkInput[]
+    updateMany?: LinkAnalyticsUpdateManyWithWhereWithoutLinkInput | LinkAnalyticsUpdateManyWithWhereWithoutLinkInput[]
+    deleteMany?: LinkAnalyticsScalarWhereInput | LinkAnalyticsScalarWhereInput[]
+  }
+
   export type UserUpdateOneRequiredWithoutLinksNestedInput = {
     create?: XOR<UserCreateWithoutLinksInput, UserUncheckedCreateWithoutLinksInput>
     connectOrCreate?: UserCreateOrConnectWithoutLinksInput
     upsert?: UserUpsertWithoutLinksInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLinksInput, UserUpdateWithoutLinksInput>, UserUncheckedUpdateWithoutLinksInput>
+  }
+
+  export type LinkAnalyticsUncheckedUpdateManyWithoutLinkNestedInput = {
+    create?: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput> | LinkAnalyticsCreateWithoutLinkInput[] | LinkAnalyticsUncheckedCreateWithoutLinkInput[]
+    connectOrCreate?: LinkAnalyticsCreateOrConnectWithoutLinkInput | LinkAnalyticsCreateOrConnectWithoutLinkInput[]
+    upsert?: LinkAnalyticsUpsertWithWhereUniqueWithoutLinkInput | LinkAnalyticsUpsertWithWhereUniqueWithoutLinkInput[]
+    createMany?: LinkAnalyticsCreateManyLinkInputEnvelope
+    set?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    disconnect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    delete?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    connect?: LinkAnalyticsWhereUniqueInput | LinkAnalyticsWhereUniqueInput[]
+    update?: LinkAnalyticsUpdateWithWhereUniqueWithoutLinkInput | LinkAnalyticsUpdateWithWhereUniqueWithoutLinkInput[]
+    updateMany?: LinkAnalyticsUpdateManyWithWhereWithoutLinkInput | LinkAnalyticsUpdateManyWithWhereWithoutLinkInput[]
+    deleteMany?: LinkAnalyticsScalarWhereInput | LinkAnalyticsScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSocialLinksInput = {
@@ -5448,6 +8332,34 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutSocialLinksInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSocialLinksInput, UserUpdateWithoutSocialLinksInput>, UserUncheckedUpdateWithoutSocialLinksInput>
+  }
+
+  export type LinkCreateNestedOneWithoutAnalyticsInput = {
+    create?: XOR<LinkCreateWithoutAnalyticsInput, LinkUncheckedCreateWithoutAnalyticsInput>
+    connectOrCreate?: LinkCreateOrConnectWithoutAnalyticsInput
+    connect?: LinkWhereUniqueInput
+  }
+
+  export type LinkUpdateOneRequiredWithoutAnalyticsNestedInput = {
+    create?: XOR<LinkCreateWithoutAnalyticsInput, LinkUncheckedCreateWithoutAnalyticsInput>
+    connectOrCreate?: LinkCreateOrConnectWithoutAnalyticsInput
+    upsert?: LinkUpsertWithoutAnalyticsInput
+    connect?: LinkWhereUniqueInput
+    update?: XOR<XOR<LinkUpdateToOneWithWhereWithoutAnalyticsInput, LinkUpdateWithoutAnalyticsInput>, LinkUncheckedUpdateWithoutAnalyticsInput>
+  }
+
+  export type UserCreateNestedOneWithoutProfileViewsInput = {
+    create?: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileViewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutProfileViewsNestedInput = {
+    create?: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileViewsInput
+    upsert?: UserUpsertWithoutProfileViewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileViewsInput, UserUpdateWithoutProfileViewsInput>, UserUncheckedUpdateWithoutProfileViewsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5594,6 +8506,7 @@ export namespace Prisma {
     clickcount?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    analytics?: LinkAnalyticsCreateNestedManyWithoutLinkInput
   }
 
   export type LinkUncheckedCreateWithoutUserInput = {
@@ -5604,6 +8517,7 @@ export namespace Prisma {
     clickcount?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    analytics?: LinkAnalyticsUncheckedCreateNestedManyWithoutLinkInput
   }
 
   export type LinkCreateOrConnectWithoutUserInput = {
@@ -5639,6 +8553,32 @@ export namespace Prisma {
 
   export type SocialLinkCreateManyUserInputEnvelope = {
     data: SocialLinkCreateManyUserInput | SocialLinkCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProfileAnalyticsCreateWithoutUserInput = {
+    id?: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProfileAnalyticsUncheckedCreateWithoutUserInput = {
+    id?: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ProfileAnalyticsCreateOrConnectWithoutUserInput = {
+    where: ProfileAnalyticsWhereUniqueInput
+    create: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProfileAnalyticsCreateManyUserInputEnvelope = {
+    data: ProfileAnalyticsCreateManyUserInput | ProfileAnalyticsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -5700,6 +8640,60 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"SocialLink"> | Date | string
   }
 
+  export type ProfileAnalyticsUpsertWithWhereUniqueWithoutUserInput = {
+    where: ProfileAnalyticsWhereUniqueInput
+    update: XOR<ProfileAnalyticsUpdateWithoutUserInput, ProfileAnalyticsUncheckedUpdateWithoutUserInput>
+    create: XOR<ProfileAnalyticsCreateWithoutUserInput, ProfileAnalyticsUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProfileAnalyticsUpdateWithWhereUniqueWithoutUserInput = {
+    where: ProfileAnalyticsWhereUniqueInput
+    data: XOR<ProfileAnalyticsUpdateWithoutUserInput, ProfileAnalyticsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProfileAnalyticsUpdateManyWithWhereWithoutUserInput = {
+    where: ProfileAnalyticsScalarWhereInput
+    data: XOR<ProfileAnalyticsUpdateManyMutationInput, ProfileAnalyticsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ProfileAnalyticsScalarWhereInput = {
+    AND?: ProfileAnalyticsScalarWhereInput | ProfileAnalyticsScalarWhereInput[]
+    OR?: ProfileAnalyticsScalarWhereInput[]
+    NOT?: ProfileAnalyticsScalarWhereInput | ProfileAnalyticsScalarWhereInput[]
+    id?: StringFilter<"ProfileAnalytics"> | string
+    userId?: StringFilter<"ProfileAnalytics"> | string
+    visitedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    visitorIp?: StringFilter<"ProfileAnalytics"> | string
+    createdAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"ProfileAnalytics"> | Date | string
+  }
+
+  export type LinkAnalyticsCreateWithoutLinkInput = {
+    id?: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkAnalyticsUncheckedCreateWithoutLinkInput = {
+    id?: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkAnalyticsCreateOrConnectWithoutLinkInput = {
+    where: LinkAnalyticsWhereUniqueInput
+    create: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput>
+  }
+
+  export type LinkAnalyticsCreateManyLinkInputEnvelope = {
+    data: LinkAnalyticsCreateManyLinkInput | LinkAnalyticsCreateManyLinkInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserCreateWithoutLinksInput = {
     id?: string
     clerkId: string
@@ -5712,6 +8706,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     socialLinks?: SocialLinkCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLinksInput = {
@@ -5726,11 +8721,40 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     socialLinks?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLinksInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutLinksInput, UserUncheckedCreateWithoutLinksInput>
+  }
+
+  export type LinkAnalyticsUpsertWithWhereUniqueWithoutLinkInput = {
+    where: LinkAnalyticsWhereUniqueInput
+    update: XOR<LinkAnalyticsUpdateWithoutLinkInput, LinkAnalyticsUncheckedUpdateWithoutLinkInput>
+    create: XOR<LinkAnalyticsCreateWithoutLinkInput, LinkAnalyticsUncheckedCreateWithoutLinkInput>
+  }
+
+  export type LinkAnalyticsUpdateWithWhereUniqueWithoutLinkInput = {
+    where: LinkAnalyticsWhereUniqueInput
+    data: XOR<LinkAnalyticsUpdateWithoutLinkInput, LinkAnalyticsUncheckedUpdateWithoutLinkInput>
+  }
+
+  export type LinkAnalyticsUpdateManyWithWhereWithoutLinkInput = {
+    where: LinkAnalyticsScalarWhereInput
+    data: XOR<LinkAnalyticsUpdateManyMutationInput, LinkAnalyticsUncheckedUpdateManyWithoutLinkInput>
+  }
+
+  export type LinkAnalyticsScalarWhereInput = {
+    AND?: LinkAnalyticsScalarWhereInput | LinkAnalyticsScalarWhereInput[]
+    OR?: LinkAnalyticsScalarWhereInput[]
+    NOT?: LinkAnalyticsScalarWhereInput | LinkAnalyticsScalarWhereInput[]
+    id?: StringFilter<"LinkAnalytics"> | string
+    linkId?: StringFilter<"LinkAnalytics"> | string
+    clickedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    clickerIp?: StringFilter<"LinkAnalytics"> | string
+    createdAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"LinkAnalytics"> | Date | string
   }
 
   export type UserUpsertWithoutLinksInput = {
@@ -5756,6 +8780,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     socialLinks?: SocialLinkUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLinksInput = {
@@ -5770,6 +8795,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSocialLinksInput = {
@@ -5784,6 +8810,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     links?: LinkCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSocialLinksInput = {
@@ -5798,6 +8825,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     links?: LinkUncheckedCreateNestedManyWithoutUserInput
+    profileViews?: ProfileAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSocialLinksInput = {
@@ -5828,6 +8856,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSocialLinksInput = {
@@ -5842,6 +8871,143 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     links?: LinkUncheckedUpdateManyWithoutUserNestedInput
+    profileViews?: ProfileAnalyticsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type LinkCreateWithoutAnalyticsInput = {
+    id?: string
+    title: string
+    url: string
+    description: string
+    clickcount?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutLinksInput
+  }
+
+  export type LinkUncheckedCreateWithoutAnalyticsInput = {
+    id?: string
+    title: string
+    url: string
+    description: string
+    clickcount?: number
+    userId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkCreateOrConnectWithoutAnalyticsInput = {
+    where: LinkWhereUniqueInput
+    create: XOR<LinkCreateWithoutAnalyticsInput, LinkUncheckedCreateWithoutAnalyticsInput>
+  }
+
+  export type LinkUpsertWithoutAnalyticsInput = {
+    update: XOR<LinkUpdateWithoutAnalyticsInput, LinkUncheckedUpdateWithoutAnalyticsInput>
+    create: XOR<LinkCreateWithoutAnalyticsInput, LinkUncheckedCreateWithoutAnalyticsInput>
+    where?: LinkWhereInput
+  }
+
+  export type LinkUpdateToOneWithWhereWithoutAnalyticsInput = {
+    where?: LinkWhereInput
+    data: XOR<LinkUpdateWithoutAnalyticsInput, LinkUncheckedUpdateWithoutAnalyticsInput>
+  }
+
+  export type LinkUpdateWithoutAnalyticsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    clickcount?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLinksNestedInput
+  }
+
+  export type LinkUncheckedUpdateWithoutAnalyticsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    clickcount?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutProfileViewsInput = {
+    id?: string
+    clerkId: string
+    email: string
+    username?: string | null
+    firstName?: string | null
+    lastName?: string | null
+    imageUrl?: string | null
+    bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    links?: LinkCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutProfileViewsInput = {
+    id?: string
+    clerkId: string
+    email: string
+    username?: string | null
+    firstName?: string | null
+    lastName?: string | null
+    imageUrl?: string | null
+    bio?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    links?: LinkUncheckedCreateNestedManyWithoutUserInput
+    socialLinks?: SocialLinkUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutProfileViewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+  }
+
+  export type UserUpsertWithoutProfileViewsInput = {
+    update: XOR<UserUpdateWithoutProfileViewsInput, UserUncheckedUpdateWithoutProfileViewsInput>
+    create: XOR<UserCreateWithoutProfileViewsInput, UserUncheckedCreateWithoutProfileViewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProfileViewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProfileViewsInput, UserUncheckedUpdateWithoutProfileViewsInput>
+  }
+
+  export type UserUpdateWithoutProfileViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    links?: LinkUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProfileViewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    links?: LinkUncheckedUpdateManyWithoutUserNestedInput
+    socialLinks?: SocialLinkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type LinkCreateManyUserInput = {
@@ -5862,6 +9028,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ProfileAnalyticsCreateManyUserInput = {
+    id?: string
+    visitedAt: Date | string
+    visitorIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type LinkUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -5870,6 +9044,7 @@ export namespace Prisma {
     clickcount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    analytics?: LinkAnalyticsUpdateManyWithoutLinkNestedInput
   }
 
   export type LinkUncheckedUpdateWithoutUserInput = {
@@ -5880,6 +9055,7 @@ export namespace Prisma {
     clickcount?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    analytics?: LinkAnalyticsUncheckedUpdateManyWithoutLinkNestedInput
   }
 
   export type LinkUncheckedUpdateManyWithoutUserInput = {
@@ -5912,6 +9088,62 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     platform?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProfileAnalyticsUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    visitedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    visitorIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkAnalyticsCreateManyLinkInput = {
+    id?: string
+    clickedAt: Date | string
+    clickerIp: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type LinkAnalyticsUpdateWithoutLinkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkAnalyticsUncheckedUpdateWithoutLinkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LinkAnalyticsUncheckedUpdateManyWithoutLinkInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clickedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    clickerIp?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

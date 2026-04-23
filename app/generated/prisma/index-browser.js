@@ -153,6 +153,24 @@ exports.Prisma.SocialLinkScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.LinkAnalyticsScalarFieldEnum = {
+  id: 'id',
+  linkId: 'linkId',
+  clickedAt: 'clickedAt',
+  clickerIp: 'clickerIp',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProfileAnalyticsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  visitedAt: 'visitedAt',
+  visitorIp: 'visitorIp',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -172,7 +190,9 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Link: 'Link',
-  SocialLink: 'SocialLink'
+  SocialLink: 'SocialLink',
+  LinkAnalytics: 'LinkAnalytics',
+  ProfileAnalytics: 'ProfileAnalytics'
 };
 
 /**

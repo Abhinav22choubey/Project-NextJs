@@ -19,7 +19,7 @@ import {
 import { FaInstagram,FaYoutube,FaTwitter,FaGithub,FaLinkedin } from "react-icons/fa";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-// import { logLinkClick } from "@/modules/analytics/actions";
+import { logLinkClick } from "@/modules/analytics/actions";
 
 
 interface LinkItem {
@@ -108,9 +108,7 @@ export default function TreeBioProfile({ profileData }: TreeBioProfileProps) {
   const handleLinkClick = async (linkId: string) => {
 
     try {
-      // await logLinkClick(linkId);
-
-
+      await logLinkClick(linkId);
       setLinkClicks(prev => ({
         ...prev,
         [linkId]: (prev[linkId] || 0) + 1
