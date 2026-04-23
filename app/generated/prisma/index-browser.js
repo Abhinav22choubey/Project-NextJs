@@ -139,7 +139,18 @@ exports.Prisma.LinkScalarFieldEnum = {
   url: 'url',
   description: 'description',
   clickcount: 'clickcount',
-  userId: 'userId'
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SocialLinkScalarFieldEnum = {
+  id: 'id',
+  platform: 'platform',
+  url: 'url',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -160,7 +171,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Link: 'Link'
+  Link: 'Link',
+  SocialLink: 'SocialLink'
 };
 
 /**

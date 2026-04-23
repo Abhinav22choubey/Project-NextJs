@@ -309,8 +309,8 @@ const LinkForm = ({ username, bio, link, socialLinks: initialSocialLinks = [] }:
   };
 
   const socialLinks = [
-    { platform: "instagram" as const, icon: Instagram },
-    { platform: "youtube" as const, icon: Youtube },
+    { platform: "instagram" as const, icon: FaInstagram },
+    { platform: "youtube" as const, icon: FaYoutube },
     { platform: "email" as const, icon: Mail },
   ];
 
